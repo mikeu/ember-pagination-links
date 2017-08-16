@@ -146,6 +146,16 @@ test('list starts on page 1 when number of pages does not exceed the width', fun
   assert.equal(pageLinks.get('listStartPage'), 1);
 });
 
+test('list starts at least full width from the end', function (assert) {
+  const pager = this.subject();
+
+  pager.set('width', 10);
+  pager.set('lastPage', 20);
+  pager.set('currentPage', 20);
+  assert.equal(pager.get('listStartPage'), 11);
+});
+
+
 test('list starts just over half the width before the current page, otherwise', function (assert) {
   const pageLinks = this.subject();
 

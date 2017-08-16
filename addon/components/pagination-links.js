@@ -21,8 +21,8 @@ export default Ember.Component.extend({
   width: 10,
 
   goToPage: (newPage) => {
-     console.log(`Would switch to page ${newPage} if you had supplied a goToPage action.`);
-   },
+    throw new Error(`No goToPage action supplied. Would have switched to page ${newPage}.`);
+  },
 
   actions: {
 
@@ -91,8 +91,10 @@ export default Ember.Component.extend({
     }
 
     const currentPage = Ember.get(this, 'currentPage');
+    const halfWidthFromCurrent = currentPage - Math.ceil(width / 2);
+    const fullWidthFromEnd = lastPage - width + 1;
 
-    return Math.max(1, currentPage - Math.ceil(width / 2));
+    return Math.max(1, Math.min(halfWidthFromCurrent, fullWidthFromEnd));
   }),
 
   /**
