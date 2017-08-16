@@ -1,8 +1,10 @@
 <h2 id="title">Welcome to Ember Pagination Links</h2>
 
+<h3>Current page: {{applicationPage}}</h3>
+
 {{pagination-links
   showFirstAndLast=true
   lastPage=15
-  currentPage=currentPage
+  currentPage=applicationPage
   goToPage=(action 'setPage')
 }}
