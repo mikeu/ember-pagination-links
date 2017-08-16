@@ -7,7 +7,7 @@
     "pagination"
   ],
   "license": "MIT",
-  "author": "Michael Underwood",
+  "author": "Michael Underwood <mike.underwood@gmail.com>",
   "directories": {
     "doc": "doc",
     "test": "tests"
