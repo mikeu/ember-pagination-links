@@ -10,16 +10,18 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{pagination-links}}`);
+  this.render(hbs`{{pagination-links
+                    firstPageIcon="F"
+                    prevPageIcon="P"
+                    nextPageIcon="N"
+                    lastPageIcon="L"
+                    width=10
+                    lastPage=3
+                    showFirstAndLast=true
+                  }}`);
 
-  assert.equal(this.$().text().trim(), '');
+  const expectedOrder = ['F', 'P', '1', '2', '3', 'N', 'L'];
+  const expected = new RegExp(expectedOrder.join('\\s*'));
 
-  // Template block usage:
-  this.render(hbs`
-    {{#pagination-links}}
-      template block text
-    {{/pagination-links}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().trim().match(expected));
 });

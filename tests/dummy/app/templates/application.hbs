@@ -1,3 +1,13 @@
-<h2 id="title">Welcome to Ember</h2>
+<h2 id="title">Welcome to Ember Pagination Links</h2>
 
-{{outlet}}
+{{pagination-links
+  showFirstAndLast=true
+  lastPage=15
+  currentPage=3
+}}
+
+{{pagination-links
+  showFirstAndLast=false
+  lastPage=5
+  currentPage=1
+}}

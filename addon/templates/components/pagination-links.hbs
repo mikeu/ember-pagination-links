@@ -1,1 +1,21 @@
-{{yield}}
+{{#if showFirstAndLast}}
+  <a>{{firstPageIcon}}</a>
+{{/if}}
+
+<a>{{prevPageIcon}}</a>
+
+{{#each pagesBeforeCurrent as |page|}}
+  <a>{{page}}</a>
+{{/each}}
+
+<a>{{currentPage}}</a>
+
+{{#each pagesAfterCurrent as |page|}}
+  <a>{{page}}</a>
+{{/each}}
+
+<a>{{nextPageIcon}}</a>
+
+{{#if showFirstAndLast}}
+  <a>{{lastPageIcon}}</a>
+{{/if}}
