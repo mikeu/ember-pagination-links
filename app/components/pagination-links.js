@@ -1,1 +1,1 @@
-export { default } from 'ember-pagination-links/components/pagination-links';
+export { default } from "ember-pagination-links/components/pagination-links";

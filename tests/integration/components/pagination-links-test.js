@@ -1,11 +1,11 @@
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import { moduleForComponent, test } from "ember-qunit";
+import hbs from "htmlbars-inline-precompile";
 
-moduleForComponent('pagination-links', 'Integration | Component | pagination links', {
+moduleForComponent("pagination-links", "Integration | Component | pagination links", {
   integration: true
 });
 
-test('it renders', function(assert) {
+test("it renders", function (assert) {
 
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
@@ -20,8 +20,8 @@ test('it renders', function(assert) {
                     showFirstAndLast=true
                   }}`);
 
-  const expectedOrder = ['F', 'P', '1', '2', '3', 'N', 'L'];
-  const expected = new RegExp(expectedOrder.join('\\s*'));
+  const expectedOrder = ["F", "P", "1", "2", "3", "N", "L"];
+  const expected = new RegExp(expectedOrder.join("\\s*"));
 
   assert.ok(this.$().text().trim().match(expected));
 });

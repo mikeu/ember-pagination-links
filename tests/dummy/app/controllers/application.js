@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
   actions: {
 
     setPage (newPage) {
-      Ember.set(this, 'currentPage', newPage);
+      Ember.set(this, "currentPage", newPage);
     },
 
   }
