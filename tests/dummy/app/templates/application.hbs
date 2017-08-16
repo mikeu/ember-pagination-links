@@ -3,10 +3,6 @@
 {{pagination-links
   showFirstAndLast=true
   lastPage=15
-  currentPage=3
-}}
-
-{{pagination-links
-  lastPage=5
-  currentPage=1
+  currentPage=currentPage
+  goToPage=(action 'setPage')
 }}
