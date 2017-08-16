@@ -27,17 +27,17 @@ export default Ember.Component.extend({
   actions: {
 
     goToPage: function (page) {
-      Ember.get(this, "goToPage")(page);
+      this.setCurrentPage(page);
     },
 
     goToPrevPage: function () {
       const page = Math.max(Ember.get(this, "currentPage") - 1, 1);
-      Ember.get(this, "goToPage")(page);
+      this.setCurrentPage(page);
     },
 
     goToNextPage: function () {
       const page = Math.min(Ember.get(this, "currentPage") + 1, Ember.get(this, "lastPage"));
-      Ember.get(this, "goToPage")(page);
+      this.setCurrentPage(page);
     },
   },
 
@@ -128,6 +128,13 @@ export default Ember.Component.extend({
     return this.range(currentPage + 1, listEndPage);
   }),
 
+  /**
+   * Update the current page and call the user-supplied action.
+   */
+  setCurrentPage (page) {
+    Ember.set(this, "currentPage", page);
+    Ember.get(this, "goToPage")(page);
+  },
 
   /**
    * Create an array containing a sequence of integers.
