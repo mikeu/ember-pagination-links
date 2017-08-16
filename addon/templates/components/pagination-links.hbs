@@ -1,21 +1,21 @@
 {{#if showFirstAndLast}}
-  <a>{{firstPageIcon}}</a>
+  <a class="pagination-links-first {{if firstDisabled 'disabled'}}" {{action "goToPage" 1}}>{{firstPageIcon}}</a>
 {{/if}}
 
-<a>{{prevPageIcon}}</a>
+<a class="pagination-links-prev {{if prevDisabled 'disabled'}}" {{action "goToPrevPage"}}>{{prevPageIcon}}</a>
 
 {{#each pagesBeforeCurrent as |page|}}
-  <a>{{page}}</a>
+  <a class="pagination-links-page" {{action "goToPage" page}}>{{page}}</a>
 {{/each}}
 
-<a>{{currentPage}}</a>
+<a class="pagination-links-current">{{currentPage}}</a>
 
 {{#each pagesAfterCurrent as |page|}}
-  <a>{{page}}</a>
+  <a class="pagination-links-page" {{action "goToPage" page}}>{{page}}</a>
 {{/each}}
 
-<a>{{nextPageIcon}}</a>
+<a class="pagination-links-next {{if nextDisabled 'disabled'}}" {{action "goToNextPage"}}>{{nextPageIcon}}</a>
 
 {{#if showFirstAndLast}}
-  <a>{{lastPageIcon}}</a>
+  <a class="pagination-links-last {{if lastDisabled 'disabled'}}" {{action "goToPage" lastPage}}>{{lastPageIcon}}</a>
 {{/if}}

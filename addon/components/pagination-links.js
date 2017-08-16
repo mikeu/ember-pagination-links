@@ -5,6 +5,8 @@ export default Ember.Component.extend({
 
   layout,
 
+  classNames: ['pagination-links'],
+
   currentPage: 1,
 
   lastPage: 1,
@@ -17,6 +19,27 @@ export default Ember.Component.extend({
   showFirstAndLast: false,
 
   width: 10,
+
+  goToPage: (newPage) => {
+     console.log(`Would switch to page ${newPage} if you had supplied a goToPage action.`);
+   },
+
+  actions: {
+
+    goToPage: function (page) {
+      Ember.get(this, 'goToPage')(page);
+    },
+
+    goToPrevPage: function () {
+      const page = Math.max(Ember.get(this, 'currentPage') - 1, 1);
+      Ember.get(this, 'goToPage')(page);
+    },
+
+    goToNextPage: function () {
+      const page = Math.min(Ember.get(this, 'currentPage') + 1, Ember.get(this, 'lastPage'));
+      Ember.get(this, 'goToPage')(page);
+    },
+  },
 
   /**
    * Whether the 'previous page' button should be disabled.
