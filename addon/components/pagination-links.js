@@ -16,7 +16,7 @@ export default Ember.Component.extend({
   nextPageIcon: "›",
   lastPageIcon: "»",
 
-  showFirstAndLast: false,
+  showFirstAndLast: true,
 
   width: 10,
 

@@ -37,7 +37,7 @@ to configure it:
 * `prevPageIcon` (string, default `"‹"`): Text of the link to the previous page.
 * `nextPageIcon` (string, default `"›"`): Text of the link to the next page.
 * `lastPageIcon` (string, default `"»"`): Text of the link to the final page.
-* `showFirstAndLast` (boolean, default `false`): Whether to include links to the
+* `showFirstAndLast` (boolean, default `true`): Whether to include links to the
                                                 first and last pages.
 
 
