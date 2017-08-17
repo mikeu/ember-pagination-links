@@ -8,16 +8,36 @@ page. It includes navigation arrows for moving to the next and previous pages,
 and optionally to the first and last pages as well. When the user clicks on
 a page number, that value will be passed to an action you supply.
 
+The `pagination-links` component does not manage the data to be displayed on
+each page. It is independent of any data store or fetching strategies. You
+tell the component how many pages you would like the user to be able to access,
+and the component in turn tells you each time the user clicks on a new page
+number. It is up to you then how to present the new page, and what models or
+other information should be displayed.
+
 ## Installation
 
 **TODO**
 
 ## Usage
 
-Add a set of pagination links to your template:
+Define an action to be called when the user changes pages:
+```js
+export default Ember.Controller.extend({
+  actions: {
+    setPage (newPage) {
+      Ember.set(this, "applicationPage", newPage);
+    },
+  },
+});
+```
 
+Add a set of pagination links to your template:
 ```hbs
-{{pagination-links lastPage=42}}
+{{pagination-links
+  lastPage=42
+  goToPage=(action 'setPage')
+}}
 ```
 
 ### Options
@@ -27,12 +47,13 @@ to configure it:
 
 #### Required
 
-* `lastPage` (integer): The highest page number to include.
+* `lastPage` (integer): Highest page number to include.
+* `goToPage` (callback): Function to call when the user changes pages.
 
 #### Optional
 
 * `width` (integer, default `10`): Maximum number of page numbers to display.
-* `currentPage` (integer, default `1`): The number of the page to start on.
+* `currentPage` (integer, default `1`): Page number to display initially.
 * `firstPageIcon` (string, default `"«"`): Text of the link to the first page.
 * `prevPageIcon` (string, default `"‹"`): Text of the link to the previous page.
 * `nextPageIcon` (string, default `"›"`): Text of the link to the next page.

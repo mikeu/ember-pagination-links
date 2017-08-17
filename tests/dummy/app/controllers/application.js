@@ -10,6 +10,6 @@ export default Ember.Controller.extend({
       Ember.set(this, "applicationPage", newPage);
     },
 
-  }
+  },
 
 });
