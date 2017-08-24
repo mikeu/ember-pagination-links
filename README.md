@@ -1,6 +1,8 @@
 # ember-pagination-links
+[![Build Status](https://travis-ci.org/mikeu/ember-pagination-links.svg?branch=master)](https://travis-ci.org/mikeu/ember-pagination-links)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-> Simple pagination links for ember applications.
+**Simple pagination links for ember applications.**
 
 This Ember addon creates a simple set of pagination-style links, based on a
 given count of page numbers to display at once and the number of the final
@@ -15,9 +17,23 @@ and the component in turn tells you each time the user clicks on a new page
 number. It is up to you then how to present the new page, and what models or
 other information should be displayed.
 
+## Examples
+
+### Defaults
+
+![Sample taken from dummy test app](screenshots/test-app.png)
+
+### Styled
+
+![Example of applied styling](screenshots/styled.png)
+
 ## Installation
 
-**TODO**
+Install the addon within your Ember project:
+
+```bash
+ember install ember-pagination-links
+```
 
 ## Usage
 
@@ -61,17 +77,52 @@ to configure it:
 * `showFirstAndLast` (boolean, default `true`): Whether to include links to the
                                                 first and last pages.
 
+### Styling
+
+Each `pagination-links` component is wrapped in a `div` with a class of
+`.pagination-links`. Within this `div` live anchor tags with classes that
+denote their purpose:
+
+* `a.pagination-links-first`, link to the first page (if displayed).
+* `a.pagination-links-last`, link to the last page (if displayed).
+* `a.pagination-links-prev`, link to the previous page.
+* `a.pagination-links-next`, link to the next page.
+* `a.pagination-links-page`, link to a specific page number.
+* `a.pagination-links-current`, the current page.
+
+Additionally, the `first`, `last`, `prev` and `next` links may have the class
+`.disabled` in the case that they are not clickable (for instance, you cannot
+go to the previous page when already on the first page).
+
+#### Example
+
+The highlight of the current page in the styled example above can be achieved
+with the following CSS:
+
+```css
+div.pagination-links a.pagination-links-current {
+  color: #fff;
+  background-color: #337ab7;
+  padding: 0.5rem;
+  border-radius: 7px;
+}
+```
+
+## Issues
+
+Please use the [issue tracker](https://github.com/mikeu/ember-pagination-links/issues)
+to report any problems you encounter using this addon.
 
 ## Development
 
-* `git clone <repository-url>` this repository
+* `git clone https://github.com/mikeu/ember-pagination-links.git`
 * `cd ember-pagination-links`
 * `npm install`
 
 ### Running
 
 * `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit the dummy test app at [http://localhost:4200](http://localhost:4200).
 
 ### Running Tests
 
