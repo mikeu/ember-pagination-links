@@ -51,8 +51,8 @@ export default Ember.Controller.extend({
 Add a set of pagination links to your template:
 ```hbs
 {{pagination-links
-  lastPage=42
-  goToPage=(action 'setPage')
+    lastPage=42
+    goToPage=(action 'setPage')
 }}
 ```
 
@@ -76,6 +76,48 @@ to configure it:
 * `lastPageIcon` (string, default `"»"`): Text of the link to the final page.
 * `showFirstAndLast` (boolean, default `true`): Whether to include links to the
                                                 first and last pages.
+* `overflow` (string, default `undefined`): Behaviour of `currentPage` when it
+                                            becomes greater than `lastPage`.
+                                            See *Overflow behaviour* below.
+
+### Overflow behaviour
+
+There are circumstance under which the current page value in the pagination
+links can become greater than the last page value. Two common examples would be
+when the user deletes enough entries from the end of the list that the last
+page decreases, or when the list is filtered so that there are now fewer
+pages of content than there used to be.
+
+The two most likely responses to such an overflow are to jump to the first or
+to the last page in the list. If you want one of these two occur automatically,
+you can specify `overflow="first"` or `overflow="last"` when creating the
+`{{pagination-links}}` component.
+
+Alternatively, you can omit the `overflow` parameter and handle this case
+yourself by binding the `currentPage` parameter to a controller property.
+Then when you change the last page value, you can update the current page
+in whatever manner you please at the same time:
+
+```hbs
+{{! /app/templates/my-page.hbs}}
+{{pagination-links
+    currentPage=currentPage
+    lastPage=lastPage
+    goToPage=(action 'setPage')
+}}
+```
+```js
+// /app/controllers/my-page.js
+// ...inside controller definition
+  filterTheList () {
+    // Perform filtering logic.
+    // Get new last page.
+    const lastPage = Ember.get(this, "lastPage");
+    // Set the current page to half-way through the list.
+    Ember.set(this, "currentPage", Math.ceil(lastPage / 2));
+  }
+// ...
+```
 
 ### Styling
 

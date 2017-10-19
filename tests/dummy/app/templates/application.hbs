@@ -1,10 +1,20 @@
 <h2 id="title">Welcome to Ember Pagination Links</h2>
 
 <h3>Current page: {{applicationPage}}</h3>
+<h3>Last page: {{lastPage}}</h3>
 
 {{pagination-links
   showFirstAndLast=true
-  lastPage=15
+  lastPage=lastPage
   currentPage=applicationPage
   goToPage=(action 'setPage')
 }}
+
+<br>
+<label for="last-page">Last page</label>
+<input
+    type="number"
+    id="last-page"
+    value={{lastPage}}
+    onchange={{action (mut lastPage) value="target.value"}}
+>

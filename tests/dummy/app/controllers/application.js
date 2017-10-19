@@ -4,6 +4,8 @@ export default Ember.Controller.extend({
 
   applicationPage: 3,
 
+  lastPage: 15,
+
   actions: {
 
     setPage (newPage) {
