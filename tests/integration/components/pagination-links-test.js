@@ -8,11 +8,13 @@ moduleForComponent("pagination-links", "Integration | Component | pagination lin
 
 function expectedRegex (start, end) {
   const arrayGiven = Ember.isArray(start);
-  const numbersGiven = Number.isInteger(start) && Number.isInteger(end);
+  const numbersGiven = !isNaN(start) && !isNaN(end);
 
   Ember.assert("Either array or two integers must be given to expectedRegex", arrayGiven || numbersGiven);
 
   if (!arrayGiven) {
+    start = parseInt(start);
+    end = parseInt(end);
     Ember.assert("The 'end' cannot be less than 'start'", start <= end);
     start = Array.apply(null, Array(end - start + 1)).map(function (_, i) {return start + i;});
   }
