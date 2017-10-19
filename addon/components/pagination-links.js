@@ -128,6 +128,19 @@ export default Ember.Component.extend({
     return this.range(currentPage + 1, listEndPage);
   }),
 
+  lastPageChanged: Ember.observer("lastPage", "currentPage", function () {
+    const lastPage = Ember.get(this, "lastPage");
+    const currentPage = Ember.get(this, "currentPage");
+    if (currentPage <= lastPage) { return; }
+
+    const overflowBehaviour = Ember.get(this, "overflow");
+    if (overflowBehaviour === "last") {
+      Ember.set(this, "currentPage", lastPage);
+    } else if (overflowBehaviour === "first") {
+      Ember.set(this, "currentPage", 1);
+    }
+  }),
+
   /**
    * Update the current page and call the user-supplied action.
    */

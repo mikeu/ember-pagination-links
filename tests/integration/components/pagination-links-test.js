@@ -73,3 +73,43 @@ test("it removes page numbers from the links when last page decreases", function
   expected = expectedRegex(1, 9);
   assert.ok(this.$().text().trim().match(expected));
 });
+
+test("it switches to the last page when overflow is 'last' and lastPage goes too low", function (assert) {
+  this.set("lastPage", 10);
+  this.render(hbs`{{pagination-links currentPage=7 lastPage=lastPage width=10 overflow='last'}}`);
+
+  this.set("lastPage", 5);
+  assert.equal(this.$(".pagination-links-current").text().trim(), 5);
+});
+
+test("it switches to the first page when overflow is 'first' and lastPage goes too low", function (assert) {
+  this.set("lastPage", 10);
+  this.render(hbs`{{pagination-links currentPage=7 lastPage=lastPage width=10 overflow='first'}}`);
+
+  this.set("lastPage", 5);
+  assert.equal(this.$(".pagination-links-current").text().trim(), 1);
+});
+
+test("it switches to the last page when overflow is 'last' and currentPage goes too high", function (assert) {
+  this.set("currentPage", 5);
+  this.render(hbs`{{pagination-links currentPage=currentPage lastPage=10 width=10 overflow='last'}}`);
+
+  this.set("currentPage", 15);
+  assert.equal(this.$(".pagination-links-current").text().trim(), 10);
+});
+
+test("it switches to the first page when overflow is 'first' and currentPage goes too high", function (assert) {
+  this.set("currentPage", 5);
+  this.render(hbs`{{pagination-links currentPage=currentPage lastPage=10 width=10 overflow='first'}}`);
+
+  this.set("currentPage", 15);
+  assert.equal(this.$(".pagination-links-current").text().trim(), 1);
+});
+
+test("it does not change current page when overflow is not set", function (assert) {
+  this.set("lastPage", 10);
+  this.render(hbs`{{pagination-links currentPage=7 lastPage=lastPage width=10}}`);
+
+  this.set("lastPage", 5);
+  assert.equal(this.$(".pagination-links-current").text().trim(), 7);
+});
