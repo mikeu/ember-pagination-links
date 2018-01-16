@@ -6,6 +6,8 @@ export default Ember.Controller.extend({
 
   lastPage: 15,
 
+  showEllipses: true,
+
   actions: {
 
     setPage (newPage) {
