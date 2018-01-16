@@ -195,7 +195,7 @@ test('list ends just under half the width after the current page, otherwise', fu
 
 
 test('list before current page is correct', function (assert) {
-  const pageLinks =this.subject();
+  const pageLinks = this.subject();
 
   pageLinks.set('width', 10);
   pageLinks.set('lastPage', 20);
@@ -204,10 +204,72 @@ test('list before current page is correct', function (assert) {
 });
 
 test('list after current page is correct', function (assert) {
-  const pageLinks =this.subject();
+  const pageLinks = this.subject();
 
   pageLinks.set('width', 10);
   pageLinks.set('lastPage', 20);
   pageLinks.set('currentPage', 10);
   assert.deepEqual(pageLinks.get('pagesAfterCurrent'), [11, 12, 13, 14]);
+});
+
+
+test('first ellipsis flag is set when the element should be shown', function (assert) {
+  const pageLinks = this.subject();
+
+  pageLinks.set('showEllipses', true);
+  pageLinks.set('width', 5);
+  pageLinks.set('lastPage', 20);
+  pageLinks.set('currentPage', 10);
+  assert.ok(pageLinks.get('showFirstEllipsis'));
+});
+
+test('first ellipsis flag is unset when ellipses are disabled', function (assert) {
+  const pageLinks = this.subject();
+
+  pageLinks.set('showEllipses', false);
+  pageLinks.set('width', 5);
+  pageLinks.set('lastPage', 20);
+  pageLinks.set('currentPage', 10);
+  assert.notOk(pageLinks.get('showFirstEllipsis'));
+});
+
+test('first ellipsis flag is unset when page one is in the list', function (assert) {
+  const pageLinks = this.subject();
+
+  pageLinks.set('showEllipses', true);
+  pageLinks.set('width', 5);
+  pageLinks.set('lastPage', 20);
+  pageLinks.set('currentPage', 2);
+  assert.notOk(pageLinks.get('showFirstEllipsis'));
+});
+
+
+test('last ellipsis flag is set when the element should be shown', function (assert) {
+  const pageLinks = this.subject();
+
+  pageLinks.set('showEllipses', true);
+  pageLinks.set('width', 5);
+  pageLinks.set('lastPage', 20);
+  pageLinks.set('currentPage', 1);
+  assert.ok(pageLinks.get('showLastEllipsis'));
+});
+
+test('last ellipsis flag is unset when ellipses are disabled', function (assert) {
+  const pageLinks = this.subject();
+
+  pageLinks.set('showEllipses', false);
+  pageLinks.set('width', 5);
+  pageLinks.set('lastPage', 20);
+  pageLinks.set('currentPage', 1);
+  assert.notOk(pageLinks.get('showLastEllipsis'));
+});
+
+test('last ellipsis flag is unset when last page is in the list', function (assert) {
+  const pageLinks = this.subject();
+
+  pageLinks.set('showEllipses', true);
+  pageLinks.set('width', 5);
+  pageLinks.set('lastPage', 20);
+  pageLinks.set('currentPage', 19);
+  assert.notOk(pageLinks.get('showLastEllipsis'));
 });
