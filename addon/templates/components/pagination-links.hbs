@@ -4,6 +4,10 @@
 
 <a class="pagination-links-prev {{if prevDisabled 'disabled'}}" {{action "goToPrevPage"}}>{{prevPageIcon}}</a>
 
+{{#if showFirstEllipsis}}
+  <span class="pagination-links-ellipsis">{{ellipsisIcon}}</span>
+{{/if}}
+
 {{#each pagesBeforeCurrent as |page|}}
   <a class="pagination-links-page" {{action "goToPage" page}}>{{page}}</a>
 {{/each}}
@@ -13,6 +17,10 @@
 {{#each pagesAfterCurrent as |page|}}
   <a class="pagination-links-page" {{action "goToPage" page}}>{{page}}</a>
 {{/each}}
+
+{{#if showLastEllipsis}}
+  <span class="pagination-links-ellipsis">{{ellipsisIcon}}</span>
+{{/if}}
 
 <a class="pagination-links-next {{if nextDisabled 'disabled'}}" {{action "goToNextPage"}}>{{nextPageIcon}}</a>
 

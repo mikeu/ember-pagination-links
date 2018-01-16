@@ -19,7 +19,7 @@ other information should be displayed.
 
 ## Examples
 
-### Defaults
+### Default appearance
 
 ![Sample taken from dummy test app](screenshots/test-app.png)
 
@@ -74,8 +74,15 @@ to configure it:
 * `prevPageIcon` (string, default `"‹"`): Text of the link to the previous page.
 * `nextPageIcon` (string, default `"›"`): Text of the link to the next page.
 * `lastPageIcon` (string, default `"»"`): Text of the link to the final page.
+* `ellipsisIcon` (string, default `"⋯"`): Text to display when an ellipsis is
+                                           required.
 * `showFirstAndLast` (boolean, default `true`): Whether to include links to the
                                                 first and last pages.
+* `showEllipses` (boolean, default `false`): Whether to show an ellipsis icon
+                                             between the ends of the page list
+                                             and the naviation icons, when the
+                                             first or last page is not included
+                                             on the list. 
 * `overflow` (string, default `undefined`): Behaviour of `currentPage` when it
                                             becomes greater than `lastPage`.
                                             See *Overflow behaviour* below.
@@ -131,6 +138,8 @@ denote their purpose:
 * `a.pagination-links-next`, link to the next page.
 * `a.pagination-links-page`, link to a specific page number.
 * `a.pagination-links-current`, the current page.
+* `span.pagination-links-ellipsis`, gap between either end of the list and the
+                                    corresponding navigation arrows.
 
 Additionally, the `first`, `last`, `prev` and `next` links may have the class
 `.disabled` in the case that they are not clickable (for instance, you cannot

@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
@@ -6,10 +6,12 @@ export default Ember.Controller.extend({
 
   lastPage: 15,
 
+  showEllipses: true,
+
   actions: {
 
     setPage (newPage) {
-      Ember.set(this, "applicationPage", newPage);
+      Ember.set(this, 'applicationPage', newPage);
     },
 
   },

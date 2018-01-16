@@ -7,6 +7,7 @@
   showFirstAndLast=true
   lastPage=lastPage
   currentPage=applicationPage
+  showEllipses=showEllipses
   goToPage=(action 'setPage')
 }}
 
@@ -17,4 +18,13 @@
     id="last-page"
     value={{lastPage}}
     onchange={{action (mut lastPage) value="target.value"}}
+>
+
+<br>
+<label for="show-ellipses">Show ellipses</label>
+<input
+    type="checkbox"
+    id="show-ellipses"
+    checked={{showEllipses}}
+    onchange={{action (mut showEllipses) value="target.checked"}}
 >
