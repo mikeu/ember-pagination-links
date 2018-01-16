@@ -115,3 +115,40 @@ test('it does not change current page when overflow is not set', function (asser
   this.set('lastPage', 5);
   assert.equal(this.$('.pagination-links-current').text().trim(), 7);
 });
+
+
+test('it renders the first ellipsis when required', function (assert) {
+  this.render(hbs`{{pagination-links
+                    prevPageIcon="P"
+                    nextPageIcon="N"
+                    width=3
+                    lastPage=20
+                    currentPage=20
+                    showFirstAndLast=false
+                    showEllipses=true
+                    ellipsisIcon="-"
+                  }}`);
+
+  const expectedOrder = ['P', '-', '18', '19', '20', 'N'];
+  const expected = expectedRegex(expectedOrder);
+
+  assert.ok(this.$().text().trim().match(expected));
+});
+
+test('it renders the last ellipsis when required', function (assert) {
+  this.render(hbs`{{pagination-links
+                    prevPageIcon="P"
+                    nextPageIcon="N"
+                    width=3
+                    lastPage=20
+                    currentPage=1
+                    showFirstAndLast=false
+                    showEllipses=true
+                    ellipsisIcon="-"
+                  }}`);
+
+  const expectedOrder = ['P', '1', '2', '3', '-', 'N'];
+  const expected = expectedRegex(expectedOrder);
+
+  assert.ok(this.$().text().trim().match(expected));
+});
