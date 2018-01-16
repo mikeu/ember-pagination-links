@@ -17,6 +17,7 @@ export default Ember.Component.extend({
   prevPageIcon: '‹',
   nextPageIcon: '›',
   lastPageIcon: '»',
+  ellipsisIcon: '⋯',
 
   showFirstAndLast: true,
 
