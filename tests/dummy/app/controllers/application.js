@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
   actions: {
 
     setPage (newPage) {
-      Ember.set(this, "applicationPage", newPage);
+      Ember.set(this, 'applicationPage', newPage);
     },
 
   },
