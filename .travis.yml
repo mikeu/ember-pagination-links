@@ -1,9 +1,13 @@
 ---
 language: node_js
+sudo: required
+dist: trusty
+
 node_js:
   - "4"
 
-sudo: false
+addons:
+  chrome: stable
 
 cache:
   directories:
@@ -13,6 +17,7 @@ env:
   # we recommend testing LTS's and latest stable release (bonus points to beta/canary)
   - EMBER_TRY_SCENARIO=ember-lts-2.8
   - EMBER_TRY_SCENARIO=ember-lts-2.12
+  - EMBER_TRY_SCENARIO=ember-lts-2.16
   - EMBER_TRY_SCENARIO=ember-release
   - EMBER_TRY_SCENARIO=ember-beta
   - EMBER_TRY_SCENARIO=ember-canary
@@ -25,8 +30,6 @@ matrix:
 
 before_install:
   - npm config set spin false
-  - npm install -g phantomjs-prebuilt
-  - phantomjs --version
 
 install:
   - npm install
