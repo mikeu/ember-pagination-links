@@ -7,9 +7,6 @@ module.exports = {
         dependencies: {
           'ember': 'components/ember#lts-2-8',
         },
-        resolutions: {
-          'ember': 'lts-2-8',
-        },
       },
       npm: {
         devDependencies: {
@@ -39,9 +36,6 @@ module.exports = {
         dependencies: {
           'ember': 'components/ember#release',
         },
-        resolutions: {
-          'ember': 'release',
-        },
       },
       npm: {
         devDependencies: {
@@ -55,9 +49,6 @@ module.exports = {
         dependencies: {
           'ember': 'components/ember#beta',
         },
-        resolutions: {
-          'ember': 'beta',
-        },
       },
       npm: {
         devDependencies: {
@@ -70,9 +61,6 @@ module.exports = {
       bower: {
         dependencies: {
           'ember': 'components/ember#canary',
-        },
-        resolutions: {
-          'ember': 'canary',
         },
       },
       npm: {
